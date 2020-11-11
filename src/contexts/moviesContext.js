@@ -44,6 +44,14 @@ const MoviesContextProvider = (props) => {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  
+  useEffect(() => {
+    getUpcomingMovies().then((movies) => {
+      dispatch({ type: "load-upcoming", payload: { movies } });
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
 
   return (
     <MoviesContext.Provider
