@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import {MoviesContext} from "../../contexts/moviesContext";
 
-const AddToWatchList = ({ movie }) => {
+const AddToWatchListButton = ({ movie }) => {
   const context = useContext(MoviesContext);
 
   const handleAddToWatchList = e => {
@@ -19,4 +19,4 @@ const AddToWatchList = ({ movie }) => {
   );
 };
 
-export default AddToWatchList;
+export default AddToWatchListButton;
