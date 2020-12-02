@@ -18,7 +18,7 @@ const SiteHeader = () => {
         size="3x"
       />
       <span className="navbar-text text-light">
-        For the movie enthusiast !!
+        Get All Your Entertainment In One Place
       </span>
       <FontAwesomeIcon
         className="navbar-text text-light"
@@ -40,6 +40,16 @@ const SiteHeader = () => {
           <li className="nav-item">
             <Link className="nav-link text-white" to="/movies/favorites">
               Favorites
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link text-white" to="/movies/watchList">
+              Watchlist
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link text-white" to="/movies/popular">
+              Popular 
             </Link>
           </li>
         </ul>

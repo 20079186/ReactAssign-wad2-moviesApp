@@ -4,13 +4,15 @@ import AddReviewButton from '../components/buttons/addReview'
 import MovieListPageTemplate from "../components/templateMovieListPage";
 
 const WatchListPage = props => {
-    const context = useContext(MoviesContext);
-    const upcoming = context.movies.filter( m => m.watchlist )
+    const context = useContext(MoviesContext)
+    const watchList = context.upcoming.filter(m => m.watchList)
+    
     return (
       <MovieListPageTemplate
-        movies={upcoming}
+        movies={watchList}
         title={"Watch List"}
         action={movie => <AddReviewButton movie={movie} />}
+        
       />
     );
   };
