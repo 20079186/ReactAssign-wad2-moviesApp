@@ -5,7 +5,8 @@ import {
   faVideo,
   faHome,
   faCalendar,
-  faArrowCircleLeft
+  faArrowCircleLeft,
+  faLanguage
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add( faStar, faFilm, faVideo, faHome, faCalendar, faArrowCircleLeft);
+library.add( faStar, faFilm, faVideo, faHome, faCalendar, faArrowCircleLeft, faLanguage);

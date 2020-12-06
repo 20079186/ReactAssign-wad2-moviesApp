@@ -4,6 +4,7 @@ import "../../globals/fontawesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./siteHeader.css";
 
+
 const SiteHeader = () => {
   return (
     <nav className="navbar  navbar-light fixed-top  bg-dark ">
@@ -25,6 +26,7 @@ const SiteHeader = () => {
         icon={["fas", "film"]}
         size="3x"
       />
+ 
       <nav className="navbar navbar-expand ">
         <ul className="navbar-nav">
           <li className="nav-item">
@@ -38,6 +40,16 @@ const SiteHeader = () => {
             </Link>
           </li>
           <li className="nav-item">
+            <Link className="nav-link text-white" to="/movies/popular">
+              Popular 
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link text-white" to="/movies/nowPlaying">
+              Now Playing 
+            </Link>
+          </li>
+          <li className="nav-item">
             <Link className="nav-link text-white" to="/movies/favorites">
               Favorites
             </Link>
@@ -47,11 +59,7 @@ const SiteHeader = () => {
               Watchlist
             </Link>
           </li>
-          <li className="nav-item">
-            <Link className="nav-link text-white" to="/movies/popular">
-              Popular 
-            </Link>
-          </li>
+          
         </ul>
       </nav>
     </nav>

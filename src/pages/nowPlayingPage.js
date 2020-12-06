@@ -3,14 +3,14 @@ import {MoviesContext} from "../contexts/moviesContext"
 import MovieListPageTemplate from "../components/templateMovieListPage"
 import TranslateButton from '../components/buttons/seeTranslations'
 
-const PopularMoviesPage = () => {
+const NowPlayingPage = () => {
   const context = useContext(MoviesContext)
-  const movies = context.popular.filter((m) => {
-    return !("popular" in m);
+  const movies = context.now_playing.filter((m) => {
+      return !("translate" in m);
   });
       return (
         <MovieListPageTemplate
-          title='Popular Movies'
+          title='Now Playing'
           movies={movies}
           action={(movie) =>{
             return <TranslateButton movie={movie} />;
@@ -19,4 +19,4 @@ const PopularMoviesPage = () => {
     );
 };
 
-export default PopularMoviesPage;
+export default NowPlayingPage;

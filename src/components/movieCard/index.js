@@ -20,17 +20,27 @@ const MovieCard = ({movie, action}) => {
           }
         />
         </Link>
+        <h4 className="card-title ">{movie.title}</h4>
+
         <div className="card-body">
-          <h4 className="card-title ">{movie.title}</h4>
           <p>
             <FontAwesomeIcon icon={["fas", "calendar"]} />
             <span> {movie.release_date}</span>
           </p>
           <p>
+            <FontAwesomeIcon icon={["fas", "language"]} />
+            <span> {movie.original_language}</span>
+          </p>
+          </div>
+
+
+          <div className="card-body2">
+          <p>
             <FontAwesomeIcon icon={["fas", "star"]} />
             <span> {movie.vote_average}</span>
           </p>
         </div>
+
         <div className="card-footer">
            {action(movie)}
         </div>

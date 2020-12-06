@@ -13,8 +13,14 @@ p {
 .card-body {
   padding-top: 1px;
   padding-bottom: 1px;
+  text-align: left;
 }
 
 .card-title {
   text-align: center
+}
+
+.card-body2 {
+
+  text-align: right;
 }

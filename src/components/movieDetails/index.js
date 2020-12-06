@@ -4,7 +4,7 @@ import "./movieDetails.css";
 export default ({ movie }) => {
   return (
     <>
-      <h4>Overview</h4>
+      <h4>Plot</h4>
       <p>{movie.overview}</p>
       <ul className="list-group list-group-horizontal">
         <li key="ruh" className="list-group-item list-group-item-dark">
@@ -13,6 +13,8 @@ export default ({ movie }) => {
         <li key="rut" className="list-group-item ">
           {movie.runtime}
         </li>
+        </ul>
+        <ul className="list-group list-group-horizontal">
         <li key="rdh" className="list-group-item list-group-item-dark">
           Release Date
         </li>
