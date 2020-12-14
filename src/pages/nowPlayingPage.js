@@ -12,8 +12,8 @@ const NowPlayingPage = () => {
         <MovieListPageTemplate
           title='Now Playing'
           movies={movies}
-          action={(movie) =>{
-            return <TranslateButton movie={movie} />;
+          action={(now_playing) =>{
+            return <TranslateButton movie={now_playing} />;
           }}
         />
     );

@@ -14,7 +14,6 @@ import AddMovieReviewPage from './pages/addMovieReviewPage';
 import WatchListPage from './pages/watchListPage';
 import PopularMoviesPage from './pages/popularMoviesPage'
 import NowPlayingPage from './pages/nowPlayingPage';
-import TranslateButton from "./components/buttons/seeTranslations";
 import MovieTranslationsPage from './components/movieTranslate';
 
 

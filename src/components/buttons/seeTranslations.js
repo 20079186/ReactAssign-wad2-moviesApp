@@ -1,21 +1,15 @@
-import React, { useContext } from "react";
-import {MoviesContext} from "../../contexts/moviesContext";
+import React from "react";
+import { Link } from "react-router-dom";
+
 
 const TranslateButton = ({ movie }) => {
-  const context = useContext(MoviesContext);
-
-  const handleSeeTranslations = e => {
-    e.preventDefault();
-    context.seeTranslations(movie.id);
-  };
   return (
-    <button
-      type="button"
-      className="btn w-100 btn-primary"
-      onClick={handleSeeTranslations}
-    >
+    <Link
+      className="btn w-100 btn-primary "
+      to="/movie/translations">
+       
       See Translations
-    </button>
+    </Link>
   );
 };
 

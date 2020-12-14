@@ -11,21 +11,27 @@ const reducer = (state, action) => {
   switch (action.type) {
 
   
-    case "add-favorite":
+    case "add-favoriteHome":
       return {
         movies: state.movies.map((m) =>
           m.id === action.payload.movie.id ? { ...m, favorite: true } : m
         ),
-        popular: state.popular.map((m) =>
-          m.id === action.payload.movie.id ? { ...m, favorite: true } : m 
-          ),
-
-        nowPlaying: state.now_playing.map((m) =>
-        m.id === action.payload.movie.id ? {...m, favorite: true} : m
-        ),
+      
        
         upcoming: [...state.upcoming],
-        translations: [...state.translations],
+        popular: [...state.popular],
+        now_playing: [...state.now_playing]
+      };
+
+      case "add-favoritePopular":
+      return {
+        popular: state.popular.map((m) =>
+          m.id === action.payload.movie.id ? { ...m, favorite: true } : m
+        ),
+      
+        movies: [...state.movies],
+        upcoming: [...state.upcoming],
+        now_playing: [...state.now_playing]
         
       };
 
@@ -43,23 +49,35 @@ const reducer = (state, action) => {
 
     case "see-translations":
       return {
-        translations: state.translations.map ((m) =>
+        now_playing: state.now_playing.map ((m) =>
         m.id === action.payload.movie.id ? { ...m, translations: true } : m
         ),
-        
       
         movies: [...state.movies],
-       
+        
       };
 
-      case "add-watchList":
+      case "add-watchListUpcoming":
         return {
           upcoming: state.upcoming.map ((m) =>
           m.id === action.payload.movie.id ? { ...m, watchList: true } : m
           ),
           
-          
+          now_playing: [...state.now_playing],
           movies: [...state.movies],
+          popular: [...state.popular]
+         
+        };
+
+        case "add-watchListNow_Playing":
+        return {
+          now_playing: state.now_playing.map ((m) =>
+          m.id === action.payload.movie.id ? { ...m, watchList: true } : m
+          ),
+          
+          upcoming: [...state.upcoming],
+          movies: [...state.movies],
+          popular: [...state.popular]
          
         };
         
@@ -71,9 +89,9 @@ const reducer = (state, action) => {
               ? { ...m, review: action.payload.review }
               : m
           ),
-
+          now_playing: [...state.now_playing],
           upcoming: [...state.upcoming],
-         
+          popular: [...state.popular]
           
         };
       
@@ -86,9 +104,15 @@ const MoviesContextProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, { movies: [], upcoming: [], popular:[], now_playing:[], translations:[] });
 
 
-  const addToFavorites = (movieId) => {
+  const addHomeToFavorites = (movieId) => {
     const index = state.movies.map((m) => m.id).indexOf(movieId);
-    dispatch({ type: "add-favorite", payload: { movie: state.movies[index] } });
+    dispatch({ type: "add-favoriteHome", payload: { movie: state.movies[index] } });
+
+  };
+
+  const addPopularToFavorites = (movieId) => {
+    const indexPopular = state.popular.map((m) => m.id).indexOf(movieId);
+    dispatch({ type: "add-favoritePopular", payload: { movie: state.popular[indexPopular] } });
 
   };
 
@@ -96,9 +120,14 @@ const MoviesContextProvider = (props) => {
     dispatch({ type: "add-review", payload: { movie, review } });
   };
 
-  const addToWatchList = (movieId) => {
+  const addUpcomingToWatchList = (movieId) => {
     const index = state.upcoming.map((m) => m.id).indexOf(movieId);
-    dispatch({ type: "add-watchList", payload: { movie: state.upcoming[index] } });
+    dispatch({ type: "add-watchListUpcoming", payload: { movie: state.upcoming[index] } });
+  };
+
+  const addNow_PlayingToWatchList = (movieId) => {
+    const index = state.now_playing.map((m) => m.id).indexOf(movieId);
+    dispatch({ type: "add-watchListNow_Playing", payload: { movie: state.now_playing[index] } });
   };
 
   const seeTranslations = (movieId) => {
@@ -153,8 +182,10 @@ const MoviesContextProvider = (props) => {
         popular: state.popular,
         now_playing: state.now_playing,
         translations: state.translations,
-        addToFavorites: addToFavorites,
-        addToWatchList: addToWatchList,
+        addHomeToFavorites: addHomeToFavorites,
+        addPopularToFavorites: addPopularToFavorites,
+        addUpcomingToWatchList: addUpcomingToWatchList,
+        addNow_PlayingToWatchList: addNow_PlayingToWatchList,
         addReview: addReview,
         seeTranslations: seeTranslations,
       }}
