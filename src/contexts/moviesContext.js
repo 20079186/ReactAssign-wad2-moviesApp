@@ -125,7 +125,7 @@ const MoviesContextProvider = (props) => {
     dispatch({ type: "add-watchListUpcoming", payload: { movie: state.upcoming[index] } });
   };
 
-  const addNow_PlayingToWatchList = (movieId) => {
+  const addNowPlayingToWatchList = (movieId) => {
     const index = state.now_playing.map((m) => m.id).indexOf(movieId);
     dispatch({ type: "add-watchListNow_Playing", payload: { movie: state.now_playing[index] } });
   };
@@ -185,7 +185,7 @@ const MoviesContextProvider = (props) => {
         addHomeToFavorites: addHomeToFavorites,
         addPopularToFavorites: addPopularToFavorites,
         addUpcomingToWatchList: addUpcomingToWatchList,
-        addNow_PlayingToWatchList: addNow_PlayingToWatchList,
+        addNowPlayingToWatchList: addNowPlayingToWatchList,
         addReview: addReview,
         seeTranslations: seeTranslations,
       }}
