@@ -17,7 +17,7 @@ const FilterControls = props => {
   };
 
   return (
-    <div className="row bg-warning">
+    <div className="row1">
       <div className="col-md-12">
         <h4>
           <span>Movie Search:</span>

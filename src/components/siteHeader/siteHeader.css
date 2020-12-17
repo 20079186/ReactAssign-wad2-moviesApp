@@ -7,3 +7,7 @@
     background-color:cornflowerblue ;
     position: fixed-top;
 }
+
+.navbar-brand{
+    color: darkslateblue;
+}

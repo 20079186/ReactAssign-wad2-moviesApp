@@ -9,7 +9,7 @@ const SiteHeader = () => {
   return (
     <nav className="navbar fixed-top navbar-light">
       <nav className="navbar-brand text-white">
-        <Link className=" text-primary" to="/">
+        <Link className=" text-white" to="/">
           TMDB Client
         </Link>
       </nav>

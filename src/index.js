@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "./components/siteHeader/style.css"
 import { BrowserRouter, Route, Redirect, Switch, Link } from "react-router-dom"
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import HomePage from "./pages/homePage";
@@ -23,9 +24,9 @@ import LatestMoviePage from "./pages/latestMovie";
 const App = () => {
   return (
       <BrowserRouter>
-        <div className="jumbotron bg-secondary">
+        <div className="jumbotron">
           <SiteHeader />     
-          <div className="container-fluid bg-dark">
+          <div className="container-fluid">
           <MoviesContextProvider>
           <GenresContextProvider>
             <Switch>
