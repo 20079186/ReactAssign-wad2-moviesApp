@@ -23,9 +23,9 @@ import LatestMoviePage from "./pages/latestMovie";
 const App = () => {
   return (
       <BrowserRouter>
-        <div className="jumbotron">
+        <div className="jumbotron bg-secondary">
           <SiteHeader />     
-          <div className="container-fluid">
+          <div className="container-fluid bg-dark">
           <MoviesContextProvider>
           <GenresContextProvider>
             <Switch>

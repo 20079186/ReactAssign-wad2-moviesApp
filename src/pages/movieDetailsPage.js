@@ -4,7 +4,7 @@ import MovieDetails from "../components/movieDetails";
 import PageTemplate from "../components/templateMoviePage";
 import MovieReviews from "../components/movieReviews";
 import useMovie from "../hooks/useMovie";
-//import Credits from "../credits/index.js";
+
 
 
 const MoviePage = props => {
@@ -37,8 +37,18 @@ const MoviePage = props => {
           </div>
         </div>
         <Route
+          path={`/movies/:id/`}
+          render={props => <MovieReviews movie={movie} {...props} />}
+
+
+        />
+
+
+        <Route
           path={`/movies/:id/reviews`}
           render={props => <MovieReviews movie={movie} {...props} />}
+
+
         />
        
       

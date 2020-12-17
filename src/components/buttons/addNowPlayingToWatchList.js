@@ -11,7 +11,7 @@ const AddNowPlayingToWatchListButton = ({ movie }) => {
   return (
     <button
       type="button"
-      className="btn w-100 btn-primary"
+      className="btn w-100 btn-dark"
       onClick={handleAddNowPlayingToWatchList}
     >
       Add to Watch List

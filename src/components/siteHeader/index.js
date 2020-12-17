@@ -7,9 +7,9 @@ import "./siteHeader.css";
 
 const SiteHeader = () => {
   return (
-    <nav className="navbar  navbar-light fixed-top  bg-dark ">
+    <nav className="navbar fixed-top navbar-light">
       <nav className="navbar-brand text-white">
-        <Link className=" text-white" to="/">
+        <Link className=" text-primary" to="/">
           TMDB Client
         </Link>
       </nav>
@@ -18,7 +18,7 @@ const SiteHeader = () => {
         icon={["fas", "video"]}
         size="3x"
       />
-      <span className="navbar-text text-light">
+      <span className="navbar-text text-white">
         Get All Your Entertainment In One Place
       </span>
       <FontAwesomeIcon
