@@ -48,7 +48,7 @@ export const getMovies = () => {
   };
 
  
-  export const getMovieCredits = () => {
+  export const getCastCredits = () => {
     return fetch(
       `https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
     )
@@ -80,7 +80,7 @@ export const getMovies = () => {
       .then(json => json.results);
   };
 
-  export const getLatestMovies = () => {
+  export const getLatestMovie = () => {
     return fetch(
       `https://api.themoviedb.org/3/movie/latest?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
     )

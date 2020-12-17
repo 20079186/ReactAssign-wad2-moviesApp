@@ -15,7 +15,7 @@ import WatchListPage from './pages/watchListPage';
 import PopularMoviesPage from './pages/popularMoviesPage'
 import NowPlayingPage from './pages/nowPlayingPage';
 import MovieCreditsPage from './pages/movieCreditsPage';
-import LatestMoviesPage from "./pages/latestMovies";
+import LatestMoviePage from "./pages/latestMovie";
 
 
 
@@ -34,7 +34,7 @@ const App = () => {
         <Route exact path="/movies/watchList" component={WatchListPage} />
         <Route exact path="/movies/popular" component={PopularMoviesPage} />
         <Route exact path="/movies/nowPlaying" component={NowPlayingPage} />
-        <Route exact path="movies/latest" component={LatestMoviesPage}/>
+        <Route exact path="movies/latest" component={LatestMoviePage}/>
         <Route exact path="/reviews/form" component={AddMovieReviewPage} />
         <Route path="/credits/:id" component={MovieCreditsPage} />
         <Route path="/reviews/:id" component={MovieReviewPage} />

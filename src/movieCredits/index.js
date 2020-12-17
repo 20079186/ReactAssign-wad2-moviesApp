@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getMovieCredits } from "../api/tmdb-api";
+import { getCastCredits } from "../api/tmdb-api";
 //import { getCrewCredits } from "../api/tmdb-api";
 
 
 export default ({ movie }) => {
-  const [cast, setMovieCredits] = useState([]);
+  const [cast, setCastCredits] = useState([]);
  // const [crew, setCrewCredits] = useState([]);
 	
 
   useEffect(() => {
-    getMovieCredits(movie.id).then(credits => {
-      setMovieCredits(credits.cast);
+    getCastCredits(movie.id).then(credits => {
+      setCastCredits(credits.cast);
     });
   }, );
 

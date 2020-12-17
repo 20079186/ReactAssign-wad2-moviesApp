@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import {MoviesContext} from "../contexts/moviesContext"
 import MovieListPageTemplate from "../components/templateMovieListPage"
-import AddLatestToWatchListButton from '../components/buttons/addPopularToFavorite'
+import AddLatestToWatchListButton from '../components/buttons/addLatestToWatchlist'
 
-const LatestMoviesPage = () => {
+const LatestMoviePage = () => {
   const context = useContext(MoviesContext)
   const movies = context.latest.filter((m) => {
     return !("watchList" in m);
@@ -19,4 +19,4 @@ const LatestMoviesPage = () => {
     );
 };
 
-export default LatestMoviesPage;
+export default LatestMoviePage;
