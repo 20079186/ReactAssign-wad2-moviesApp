@@ -1,5 +1,5 @@
 import React, { useEffect, createContext, useReducer } from "react";
-import { getMovies, getUpcomingMovies, getPopularMovies, getNow_Playing, getTranslations} from "../api/tmdb-api";
+import { getMovies, getUpcomingMovies, getPopularMovies, getNow_Playing, getTranslations, getLatestMovies} from "../api/tmdb-api";
 
 
 
@@ -20,7 +20,8 @@ const reducer = (state, action) => {
        
         upcoming: [...state.upcoming],
         popular: [...state.popular],
-        now_playing: [...state.now_playing]
+        now_playing: [...state.now_playing],
+        latest: [...state.latest]
       };
 
       case "add-favoritePopular":
@@ -31,21 +32,26 @@ const reducer = (state, action) => {
       
         movies: [...state.movies],
         upcoming: [...state.upcoming],
-        now_playing: [...state.now_playing]
+        now_playing: [...state.now_playing],
+        latest: [...state.latest]
         
       };
 
     case "load":
-      return { movies: action.payload.movies, upcoming: [...state.upcoming], popular: [...state.popular], now_playing: [...state.now_playing] };
+      return { movies: action.payload.movies, upcoming: [...state.upcoming], popular: [...state.popular], now_playing: [...state.now_playing], latest: [...state.latest] };
 
     case "load-upcoming":
-      return {upcoming: action.payload.movies, movies: [...state.movies], popular: [...state.popular], now_playing: [...state.now_playing] };
+      return {upcoming: action.payload.movies, movies: [...state.movies], popular: [...state.popular], now_playing: [...state.now_playing], latest: [...state.latest] };
 
     case "load-popular":
-        return {popular: action.payload.movies, movies: [...state.movies], upcoming: [...state.upcoming], now_playing: [...state.now_playing] };
+        return {popular: action.payload.movies, movies: [...state.movies], upcoming: [...state.upcoming], now_playing: [...state.now_playing], latest: [...state.latest] };
 
     case "load-now_playing":
-        return {now_playing: action.payload.movies, movies: [...state.movies], upcoming: [...state.upcoming], popular: [...state.popular] };
+        return {now_playing: action.payload.movies, movies: [...state.movies], upcoming: [...state.upcoming], popular: [...state.popular], latest: [...state.latest] };
+
+    case "load-latest":
+        return {latest: action.payload.movies, movies: [...state.movies], upcoming: [...state.upcoming], popular: [...state.popular], now_playing: [...state.now_playing] };
+
 
     case "see-translations":
       return {
@@ -65,13 +71,27 @@ const reducer = (state, action) => {
           
           now_playing: [...state.now_playing],
           movies: [...state.movies],
-          popular: [...state.popular]
+          popular: [...state.popular],
+          latest: [...state.latest]
          
         };
 
         case "add-watchListNow_Playing":
         return {
           now_playing: state.now_playing.map ((m) =>
+          m.id === action.payload.movie.id ? { ...m, watchList: true } : m
+          ),
+          
+          upcoming: [...state.upcoming],
+          movies: [...state.movies],
+          popular: [...state.popular],
+          latest: [...state.latest]
+         
+        };
+
+        case "add-watchListLatest":
+        return {
+          latest: state.latest.map ((m) =>
           m.id === action.payload.movie.id ? { ...m, watchList: true } : m
           ),
           
@@ -91,7 +111,8 @@ const reducer = (state, action) => {
           ),
           now_playing: [...state.now_playing],
           upcoming: [...state.upcoming],
-          popular: [...state.popular]
+          popular: [...state.popular],
+          latest: [...state.latest]
           
         };
       
@@ -101,7 +122,7 @@ const reducer = (state, action) => {
 };
 
 const MoviesContextProvider = (props) => {
-  const [state, dispatch] = useReducer(reducer, { movies: [], upcoming: [], popular:[], now_playing:[], translations:[] });
+  const [state, dispatch] = useReducer(reducer, { movies: [], upcoming: [], popular:[], now_playing:[], translations:[], latest:[] });
 
 
   const addHomeToFavorites = (movieId) => {
@@ -128,6 +149,11 @@ const MoviesContextProvider = (props) => {
   const addNowPlayingToWatchList = (movieId) => {
     const index = state.now_playing.map((m) => m.id).indexOf(movieId);
     dispatch({ type: "add-watchListNow_Playing", payload: { movie: state.now_playing[index] } });
+  };
+
+  const addLatestToWatchList = (movieId) => {
+    const index = state.latest.map((m) => m.id).indexOf(movieId);
+    dispatch({ type: "add-watchListLatest", payload: { movie: state.latest[index] } });
   };
 
   const seeTranslations = (movieId) => {
@@ -167,6 +193,13 @@ const MoviesContextProvider = (props) => {
   }, []);
 
   useEffect(() => {
+    getLatestMovies().then((movies) => {
+      dispatch({ type: "load-latest", payload: { movies } });
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
     getTranslations().then((movies) => {
       dispatch({ type: "load-translations", payload: { movies } });
     });
@@ -182,6 +215,8 @@ const MoviesContextProvider = (props) => {
         popular: state.popular,
         now_playing: state.now_playing,
         translations: state.translations,
+        latest: state.latest,
+        addLatestToWatchList: addLatestToWatchList,
         addHomeToFavorites: addHomeToFavorites,
         addPopularToFavorites: addPopularToFavorites,
         addUpcomingToWatchList: addUpcomingToWatchList,

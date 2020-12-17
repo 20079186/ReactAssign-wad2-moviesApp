@@ -20,10 +20,10 @@ const FilterControls = props => {
     <div className="row bg-warning">
       <div className="col-md-12">
         <h4>
-          <span>List Filtering:</span>
+          <span>Movie Search:</span>
           <input
             type="text"
-            placeholder="Title Search"
+            placeholder="Search Name"
             onChange={handleTextChange}
           />
           <span>Genre:</span>
